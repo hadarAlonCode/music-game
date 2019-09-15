@@ -1,0 +1,11 @@
+.waves-effect{
+ display: block;
+ margin-bottom: 8px;
+ height: 3.5vw;
+ background-color: #673ab7;
+}
+
+.waves-effect:hover{
+    background-color: #8d72bb;
+
+}

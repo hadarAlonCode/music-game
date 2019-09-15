@@ -1,0 +1,19 @@
+.score{
+    margin-top: 12vw;
+    font-size: 3vw;
+}
+
+
+.message{
+    width: 20vw;
+    margin-left: 40vw;
+    margin-top: 1vw;
+}
+
+#button{
+background-color: #009688
+}
+
+#button:hover{
+    background-color: #5ec4b9
+    }
