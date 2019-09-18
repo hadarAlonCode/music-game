@@ -3,7 +3,7 @@
 
 ### Rules:
 - Each game has 10 rounds
-- Each round shows a photo of a music album, and a list of 5 - random artists (one of the artists is the correct answer).
+- Each round shows a photo of a music album, and a list of 5 random artists (one of the artists is the correct answer).
 - The user has to guess which artist released the album.
 
 ###### Game screenshot
