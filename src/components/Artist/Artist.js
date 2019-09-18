@@ -10,11 +10,11 @@ class Artist extends Component {
 
     render() {
         return (
-            <div 
+            <button 
             className="waves-effect waves-light btn-large" onClick={this.guessAnswer} 
             id={this.props.artist.id}>
                {this.props.artist.artist} 
-            </div>
+            </button>
         );
     }
 }

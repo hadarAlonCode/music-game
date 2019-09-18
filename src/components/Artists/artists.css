@@ -3,3 +3,18 @@
     margin: auto;
     margin-right: 22vw;
 }
+
+@media (max-width: 1200px) {
+  
+  .artistsSection {
+    width: 65vw;
+    margin-top: 15vw;
+    margin: auto;
+    margin-right: 19vw;
+  }
+
+
+  
+  }
+
+

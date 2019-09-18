@@ -37,3 +37,72 @@
     /* grid-gap: 5fr;        */
     grid-template-columns: 1fr 1fr;
 }
+
+@media (max-width: 1200px) {
+  
+  .gameSection {
+    margin-top: 4vw;
+    display: grid;
+    grid-template-columns: auto;
+}
+
+
+.title {
+  font-size: 6.5vw;
+  margin-top: 2vw;
+  margin-left: 0vw;
+}
+
+.round {
+  background-color: #9d98ef;
+  height: 12vw;
+  border-radius: 50%;
+  color: white;
+  width: 12vw;
+  text-align: center;
+  margin: 17px;
+  position: absolute;
+  top: 1.5vw;
+  left: 7vw;
+}
+
+.roundNum {
+  position: absolute;
+  top: 1.7vw;
+  left: 1.3vw;
+  font-weight: bold;
+  font-size: 3.2vw;
+}
+
+}
+
+
+@media (max-width: 740px) {
+
+
+  .title{
+    margin-top: 6vw;
+    margin-left: 9vw;
+  }
+
+  .round {
+    background-color: #9d98ef;
+    height: 13vw;
+    border-radius: 50%;
+    color: white;
+    width: 13vw;
+    text-align: center;
+    margin: 17px;
+    position: absolute;
+    top: -0.5vw;
+    left: 12vw;
+}
+
+.roundNum {
+  position: absolute;
+  top: 1.7vw;
+  left: 1.5vw;
+  font-weight: bold;
+  font-size: 3.5vw;
+}
+}

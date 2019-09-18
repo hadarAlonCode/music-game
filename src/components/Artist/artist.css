@@ -2,6 +2,7 @@
  display: block;
  margin-bottom: 8px;
  height: 3.5vw;
+ width: 23vw;
  background-color: #673ab7;
 }
 
@@ -9,3 +10,29 @@
     background-color: #8d72bb;
 
 }
+
+@media (max-width: 1200px) {
+  
+    .waves-effect {
+        display: block;
+        margin-bottom: 28px;
+        height: 10.5vw !important;
+        font-size: 3.5vw;
+        width: 70vw;
+    }
+    
+    }
+  
+
+    
+
+@media (max-width: 740px) {
+    .waves-effect {
+        display: block;
+        margin-bottom: 13px  !important;
+        height: 13.5vw !important;
+        font-size: 3.5vw;
+        width: 70vw;
+    }
+}
+  

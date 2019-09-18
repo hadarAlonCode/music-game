@@ -1,3 +1,23 @@
 .albumImg{
     margin-left: 22vw;
 }
+
+
+@media (max-width: 1200px) {
+  
+  
+    .albumImg{
+    margin-bottom: 2vw;
+    height: 45vw;
+    margin-left: 0vw;
+    }
+
+    }
+
+
+    @media (max-width: 740px) {
+        .albumImg {
+            margin-bottom: 2vw;
+            height: 66vw;
+        }
+    }
