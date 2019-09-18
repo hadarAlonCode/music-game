@@ -19,7 +19,8 @@ class App extends Component {
       try: 0,
       sequence: 0,
       komboWin: 1,
-      preventDuplicates: []
+      preventDuplicates: [],
+      superStars: ["Beyoncé", "Christina Aguilera", "Dave Matthews Band", "Alicia Keys", "The Goo Goo Dolls"]
     }
   }
 
@@ -38,6 +39,7 @@ class App extends Component {
     if (this.state.preventDuplicates) {
       for (let album of this.state.preventDuplicates) {
         if (album.img === randomItem.img) {
+          arr = arr.filter(a=> a !== album )
           randomItem = arr[Math.floor(Math.random() * arr.length)]
         }
       }
@@ -99,6 +101,15 @@ class App extends Component {
     })
   }
 
+  checkStarts = (artist) => {
+   if(this.state.superStars.find(s=> s === artist && s === this.state.correctItem.artist)){
+     alert("You've earned 5 bonus points!")
+     return 5
+   } else{
+     return 0
+   }
+  }
+
   // guess Answear ========================
 
   guessAnswer = async (artist) => {
@@ -109,7 +120,7 @@ class App extends Component {
 
     if (this.state.try === 1 && artist === this.state.correctItem.artist && this.state.sequence === 2 && this.state.komboWin >= 2) {
       this.setState({
-        score: this.state.score + 10 + Math.pow(10, this.state.komboWin),
+        score: this.state.score + 10 + Math.pow(10, this.state.komboWin) + this.checkStarts(artist),
         round: this.state.round + 1,
         try: 0,
         sequence: 0,
@@ -133,7 +144,7 @@ class App extends Component {
 
     } else if (this.state.try === 1 && artist === this.state.correctItem.artist) {
       this.setState({
-        score: this.state.score + 10,
+        score: this.state.score + 10 + this.checkStarts(artist),
         round: this.state.round + 1,
         try: 0,
         sequence: this.state.sequence + 1
@@ -143,7 +154,7 @@ class App extends Component {
 
     } else if (this.state.try === 2 && artist === this.state.correctItem.artist) {
       this.setState({
-        score: this.state.score + 5,
+        score: this.state.score + 5 + this.checkStarts(artist),
         round: this.state.round + 1,
         try: 0,
         sequence: 0,
@@ -154,7 +165,7 @@ class App extends Component {
 
     } else if (this.state.try === 3 && artist === this.state.correctItem.artist) {
       this.setState({
-        score: this.state.score + 2,
+        score: this.state.score + 2 + this.checkStarts(artist),
         round: this.state.round + 1,
         try: 0,
         sequence: 0

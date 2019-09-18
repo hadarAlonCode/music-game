@@ -7,7 +7,6 @@ class End extends Component {
     }
 
     render() {
-        console.log('sds');
         
         return (
             <div className="message">
