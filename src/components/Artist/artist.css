@@ -1,11 +1,11 @@
 @keyframes fade-button {
     from {
       margin-top: -10%;
-      /* opacity: 0; */
+     
     }
     to {
       margin-top: 0;
-      /* opacity: 1; */
+     
     }
   }
 
