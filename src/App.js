@@ -16,7 +16,7 @@ class App extends Component {
       randomArtists: [],
       round: 1,
       score: 0,
-      try: 0,
+      GuessNumber: 0,
       sequence: 0,
       komboWin: 1,
       preventDuplicates: [],
@@ -32,7 +32,6 @@ class App extends Component {
   }
 
 
-  // **********need to fix to 100% prevent Duplicates album**********
   randomAlbum = () => {
     let arr = this.allAlbum()
     let randomItem = arr[Math.floor(Math.random() * arr.length)]
@@ -49,8 +48,6 @@ class App extends Component {
       preventDuplicates: [randomItem, ...this.state.preventDuplicates]
     })
   }
-
-  //random Artists ======================================
 
   randomArtists = () => {
     let ArtistArr = []
@@ -79,7 +76,6 @@ class App extends Component {
     })
   }
 
-
   random = () => {
     this.shuffle(this.randomArtists())
   }
@@ -95,13 +91,13 @@ class App extends Component {
     await this.setState({
       round: 1,
       score: 0,
-      try: 0,
-      sequence: 0,
+      GuessNumber: 0,
+      winSequence: 0,
       komboWin: 1
     })
   }
 
-  checkStarts = (artist) => {
+  checkStars = (artist) => {
    if(this.state.superStars.find(s=> s === artist && s === this.state.correctItem.artist)){
      alert("You've earned 5 bonus points!")
      return 5
@@ -110,31 +106,29 @@ class App extends Component {
    }
   }
 
-  // guess Answear ========================
-
   guessAnswer = async (artist) => {
 
     await this.setState({
-      try: this.state.try + 1
+      GuessNumber: this.state.GuessNumber + 1
     })
 
-    if (this.state.try === 1 && artist === this.state.correctItem.artist && this.state.sequence === 2 && this.state.komboWin >= 2) {
+    if (this.state.GuessNumber === 1 && artist === this.state.correctItem.artist && this.state.winSequence === 2 && this.state.komboWin >= 2) {
       this.setState({
-        score: this.state.score + 10 + Math.pow(10, this.state.komboWin) + this.checkStarts(artist),
+        score: this.state.score + 10 + Math.pow(10, this.state.komboWin) + this.checkStars(artist),
         round: this.state.round + 1,
-        try: 0,
-        sequence: 0,
+        GuessNumber: 0,
+        winSequence: 0,
         komboWin: this.state.komboWin + 1
       })
       await this.randomAlbum()
       await this.random()
 
-    } else if (this.state.try === 1 && artist === this.state.correctItem.artist && this.state.sequence === 2 && this.state.komboWin === 1) {
+    } else if (this.state.GuessNumber === 1 && artist === this.state.correctItem.artist && this.state.winSequence === 2 && this.state.komboWin === 1) {
       this.setState({
         score: this.state.score + 20,
         round: this.state.round + 1,
-        try: 0,
-        sequence: 0,
+        GuessNumber: 0,
+        winSequence: 0,
         komboWin: this.state.komboWin + 1
       })
 
@@ -142,43 +136,43 @@ class App extends Component {
       await this.randomAlbum()
       await this.random()
 
-    } else if (this.state.try === 1 && artist === this.state.correctItem.artist) {
+    } else if (this.state.GuessNumber === 1 && artist === this.state.correctItem.artist) {
       this.setState({
-        score: this.state.score + 10 + this.checkStarts(artist),
+        score: this.state.score + 10 + this.checkStars(artist),
         round: this.state.round + 1,
-        try: 0,
-        sequence: this.state.sequence + 1
+        GuessNumber: 0,
+        winSequence: this.state.winSequence + 1
       })
       await this.randomAlbum()
       await this.random()
 
-    } else if (this.state.try === 2 && artist === this.state.correctItem.artist) {
+    } else if (this.state.GuessNumber === 2 && artist === this.state.correctItem.artist) {
       this.setState({
-        score: this.state.score + 5 + this.checkStarts(artist),
+        score: this.state.score + 5 + this.checkStars(artist),
         round: this.state.round + 1,
-        try: 0,
-        sequence: 0,
+        GuessNumber: 0,
+        winSequence: 0,
         komboWin: 0
       })
       await this.randomAlbum()
       await this.random()
 
-    } else if (this.state.try === 3 && artist === this.state.correctItem.artist) {
+    } else if (this.state.GuessNumber === 3 && artist === this.state.correctItem.artist) {
       this.setState({
-        score: this.state.score + 2 + this.checkStarts(artist),
+        score: this.state.score + 2 + this.checkStars(artist),
         round: this.state.round + 1,
-        try: 0,
-        sequence: 0
+        GuessNumber: 0,
+        winSequence: 0
       })
       await this.randomAlbum()
       await this.random()
 
-    } else if (this.state.try === 3 && artist !== this.state.correctItem.artist) {
+    } else if (this.state.GuessNumber === 3 && artist !== this.state.correctItem.artist) {
       this.setState({
         score: this.state.score - 5,
         round: this.state.round + 1,
-        try: 0,
-        sequence: 0
+        GuessNumber: 0,
+        winSequence: 0
       })
       await this.randomAlbum()
       await this.random()
@@ -197,7 +191,7 @@ class App extends Component {
             <Header round={this.state.round} />
             <div className="title">Guess the artist</div>
             <div className="gameSection">
-            <Albums correctAns={this.state.correctItem} />
+            <Albums correctAns={this.state.correctItem} key={this.state.correctItem.img} />
             <Artists randomArtists={this.state.randomArtists} correctAns={this.state.correctItem} guessAnswer={this.guessAnswer} />
             </div>
           </div>
