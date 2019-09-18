@@ -1,6 +1,31 @@
+@keyframes opacity-img {
+    from {
+      /* margin-top: -10%; */
+      opacity: 0;
+    }
+    to {
+      /* margin-top: 0; */
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-button {
+    from {
+      margin-top: -10%;
+      /* opacity: 0; */
+    }
+    to {
+      margin-top: 0;
+      /* opacity: 1; */
+    }
+  }
+
 .albumImg{
     margin-left: 22vw;
+    animation-name: opacity-img;
+    animation-duration: 2s;
 }
+
 
 
 @media (max-width: 1200px) {

@@ -1,9 +1,23 @@
+@keyframes fade-button {
+    from {
+      margin-top: -10%;
+      /* opacity: 0; */
+    }
+    to {
+      margin-top: 0;
+      /* opacity: 1; */
+    }
+  }
+
+
 .waves-effect{
  display: block;
  margin-bottom: 8px;
  height: 3.5vw;
  width: 23vw;
  background-color: #673ab7;
+ animation-name: fade-button;
+ animation-duration: 1.4s;
 }
 
 .waves-effect:hover{
