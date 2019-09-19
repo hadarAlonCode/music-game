@@ -51,18 +51,21 @@ class App extends Component {
 
   randomArtists = () => {
     let ArtistArr = []
-    let unique = []
     ArtistArr.push(this.state.correctItem)
     let arr = this.allAlbum()
 
-    while (unique.length < 5) {
+    while (ArtistArr.length < 5) {
       let randomItem = arr[Math.floor(Math.random() * arr.length)]
-      if (ArtistArr[ArtistArr.length - 1].id !== randomItem.id) {
+      if (this.preventDuplicate(randomItem, ArtistArr) == false) {
         ArtistArr.push(randomItem)
       }
-      unique = [...new Map(ArtistArr.map(obj => [JSON.stringify(obj), obj])).values()];
+     
     }
-    return unique
+    return ArtistArr
+  }
+
+  preventDuplicate=(randomItem, ArtistArr)=>{
+    return ArtistArr.filter(a=> a.id === randomItem.id)
   }
 
   shuffle(a) {
